@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebServiceTutorial.Views.UserPage"
+             Title="Usuarios Registrados">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout>
+                    <Button Text="Refrescar" Command="{Binding GetListCommand}" />
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+                    <ListView x:Name="UsersList" ItemsSource="{Binding Users}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Image Source="{Binding Avatar}"/>
+                                        <Label Text="{Binding FullName}"></Label>
+                                        <Label Text="{Binding FullPhone}"></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            <Button x:Name="AddUserButton" Grid.Row="0" Text="Nuevo" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold" BackgroundColor="#4ba862" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="160" HeightRequest="70" Margin="0,0,20,22" VerticalOptions="End"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
